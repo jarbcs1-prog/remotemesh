@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RemoteMesh — The High-Performance Edge Connector</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #111111;
+    --muted: #6b7280;
+    --accent: #3b82f6;
+    --accent-ink: #ffffff;
+    --border: #e5e7eb;
+    --card: #f9fafb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  header { padding: 40px 0 24px; }
+  .hero { display: flex; flex-direction: column; gap: 12px; }
+  .hero h1 { font-size: 2.2rem; line-height: 1.15; }
+  .hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 70ch; }
+  .ctas { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 12px 20px; border-radius: 8px;
+    font-weight: 600; cursor: pointer; border: 1px solid var(--border);
+    background: var(--bg); color: var(--fg);
+  }
+  .btn:hover { background: var(--card); text-decoration: none; }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn.primary:hover { background: #2563eb; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 40px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .card h3 { margin-bottom: 6px; }
+  .section { margin-top: 48px; }
+  h2 { font-size: 1.5rem; margin-bottom: 12px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px; }
+  .step { display: flex; gap: 12px; align-items: flex-start; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); }
+  .step .num { font-weight: 700; color: var(--accent); flex-shrink: 0; }
+  .step ol { margin: 0; padding-left: 18px; }
+  .provider-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
+  .provider { border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .provider h4 { margin-bottom: 4px; }
+  .provider .mono { font-size: 0.85rem; color: var(--muted); }
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+  @media (max-width: 640px) { .hero h1 { font-size: 1.6rem; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="container hero">
+    <h1>RemoteMesh</h1>
+    <p class="lead">Every frontier model on one device — with device control. A lean Android client that unifies OpenAI, Anthropic, OpenRouter, OpenCode and Hermes, with mDNS pairing, a live tool-call drawer, a secure sensor bridge, and phone↔PC handoff.</p>
+    <div class="ctas">
+      <a class="btn primary" href="https://github.com/RemoteMesh/RemoteMesh/releases">Download APK</a>
+      <a class="btn" href="#how-it-works">How it pairs</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="features" id="features">
+    <div class="card">
+      <h3>Multi-Provider Client</h3>
+      Switch between OpenAI, Anthropic, OpenRouter, OpenCode and Hermes from a single tap — unified request format, real-time streaming.
+    </div>
+    <div class="card">
+      <h3>mDNS Zero-Config Pairing</h3>
+      Auto-discover your desktop companion daemon (_remotemesh._tcp.local). Scan a QR code on your desktop and the phone connects instantly.
+    </div>
+    <div class="card">
+      <h3>Live Tool-Call Drawer</h3>
+      Transparent agentic progression: Thinking → Calling Tool → Processing Result → Synthesis. See every step the model takes.
+    </div>
+    <div class="card">
+      <h3>Secure Sensor Bridge</h3>
+      Grant the remote model controlled access to GPS, clipboard, camera and notifications — all behind user-consent dialogs.
+    </div>
+    <div class="card">
+      <h3>Phone↔PC Handoff</h3>
+      Handoff a session to your PC or resume from your PC. Chat history, system prompts and active agentic state transfer over a local WebSocket.
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <h2>How it pairs (under 30 seconds)</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><strong>Run the desktop daemon</strong><br>Start <code>remotemesh_desktop_bridge.py</code> on your Windows PC (local port 11435).</div></div>
+      <div class="step"><div class="num">2</div><div><strong>Generate a QR code</strong><br>The companion daemon prints a configuration QR code with TLS cert and endpoint.</div></div>
+      <div class="step"><div class="num">3</div><div><strong>Scan with the phone</strong><br>Open RemoteMesh on your Android device. CameraX scans the code and provisions the endpoint.</div></div>
+      <div class="step"><div class="num">4</div><div><strong>Session resumes</strong><br>Chat history and active agentic state transfer over a local WebSocket. Your work continues on the phone.</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="providers">
+    <h2>Multi-provider parity</h2>
+    <div class="provider-grid">
+      <div class="provider"><h4>OpenAI <span class="mono">Green</span></h4><p class="mono">/v1/chat/completions</p></div>
+      <div class="provider"><h4>Anthropic <span class="mono">Purple</span></h4><p class="mono">/v1/messages</p></div>
+      <div class="provider"><h4>OpenRouter <span class="mono">Blue</span></h4><p class="mono">Unified routing</p></div>
+      <div class="provider"><h4>OpenCode <span class="mono">Orange</span></h4><p class="mono">Local dev</p></div>
+      <div class="provider"><h4>Hermes <span class="mono">Indigo</span></h4><p class="mono">Agent relay</p></div>
+      <div class="provider"><h4>Custom Local <span class="mono">Grey</span></h4><p class="mono">Self-hosted endpoint</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="architecture">
+    <h2>Lean by design</h2>
+    <p>No model weights bundled. The <30 MB APK is a pure connector client — OkHttp with persistent WebSockets, SSE streaming, and Android Keystore-encrypted credential storage. If the network drops, a local fallback engine (LiteRT-LM) keeps the app responsive.</p>
+  </section>
+
+  <section class="section" id="install">
+    <h2>Get started</h2>
+    <p>Download the APK, install it on your Android device, and scan the QR code from your desktop companion daemon.</p>
+    <ul style="margin-left: 20px; list-style: none;">
+      <li><strong>APK</strong> — download from the releases page</li>
+      <li><strong>Pairing</strong> — run the desktop companion on Windows 11</li>
+      <li><strong>No Play Store dependency</strong> — sideload via ADB or distribute via the pilot channel</li>
+    </ul>
+  </section>
+
+  <section class="section" id="faq">
+    <h2>FAQ</h2>
+    <dl>
+      <dt>What data leaves my phone?</dt>
+      <dd>Only the API calls you make to the provider you choose. No on-device inference, no model weights bundled.</dd>
+      <dt>What happens if the PC is off?</dt>
+      <dd>RemoteMesh is a standalone client. The PC daemon is only needed for handoff and mDNS discovery; without it you can still chat with your chosen provider.</dd>
+      <dt>Is my data stored on the device?</dt>
+      <dd>API credentials are stored in Android Keystore / EncryptedSharedPreferences, never in plain text.</dd>
+      <dt>Does it work offline?</dt>
+      <dd>The client is offline-capable for basic local fallback expectations (LiteRT-LM design goal), but active provider streaming requires network.</dd>
+    </dl>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>RemoteMesh — the high-performance edge connector. Source: <a href="https://github.com/RemoteMesh/RemoteMesh">github.com/RemoteMesh/RemoteMesh</a> · License: see repository.</p>
+    <p>Built with Jetpack Compose, KotlinX Serialization, OkHttp, and Android Keystore.</p>
+  </div>
+</footer>
+</body>
+</html>
